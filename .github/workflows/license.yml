@@ -1,0 +1,9 @@
+name: license
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  license:
+    uses: ./.github/workflows/license-checker.yml

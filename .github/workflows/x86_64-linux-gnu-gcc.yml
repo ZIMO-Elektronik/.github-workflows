@@ -1,0 +1,36 @@
+name: x86_64-linux-gnu-gcc
+
+on:
+  workflow_call:
+    inputs:
+      target:
+        description: 'CMake targets to build'
+        default: 'all'
+        required: false
+        type: string
+      upload-artifact:
+        description: 'Upload build folder as artifact "build.tar"'
+        default: false
+        required: false
+        type: boolean
+
+jobs:
+  x86_64-linux-gnu-gcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - run: cmake -Bbuild
+        env:
+          CC:   gcc-13
+          CXX:  g++-13
+      - run: cmake --build build --target ${{ inputs.target }}
+      # https://github.com/actions/upload-artifact#limitations
+      - if: ${{ inputs.upload-artifact }}
+        run: tar -cvf build.tar build
+      - if: ${{ inputs.upload-artifact }}
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: build.tar
+          path: build.tar

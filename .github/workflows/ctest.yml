@@ -1,0 +1,29 @@
+name: ctest
+
+on:
+  workflow_call:
+    inputs:
+      target:
+        description: 'CMake test target'
+        default: ${{ github.event.repository.name }}Tests
+        required: false
+        type: string
+
+jobs:
+  x86_64-linux-gnu-gcc:
+    uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
+    with:
+      target: ${{ inputs.target }}
+      upload-artifact: true
+
+  ctest:
+    needs: x86_64-linux-gnu-gcc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3.0.2
+        with:
+          name: build.tar
+          path: .
+      - run: tar -xvf build.tar
+      - run: ls -R
+      - run: ctest --test-dir build --schedule-random

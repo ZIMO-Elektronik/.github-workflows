@@ -1,0 +1,14 @@
+name: license-checker
+
+on:
+  workflow_call:
+
+jobs:
+  license-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - name: Check license
+        uses: kt3k/license_checker@v1.0.6

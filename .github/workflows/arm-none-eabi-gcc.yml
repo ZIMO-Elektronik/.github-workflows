@@ -1,0 +1,25 @@
+name: arm-none-eabi-gcc
+
+on:
+  workflow_call:
+    inputs:
+      arch:
+        description: 'Architecture flags passed to arm-none-eabi-gcc'
+        required: true
+        type: string
+      target:
+        description: 'CMake targets to build'
+        default: 'all'
+        required: false
+        type: string
+
+jobs:
+  arm-none-eabi-gcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - uses: carlosperate/arm-none-eabi-gcc-action@v1.8.0
+      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/src/toolchains/arm_none_eabi_gcc.cmake
+      - run: cmake --build build --target ${{ inputs.target }}

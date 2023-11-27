@@ -1,0 +1,17 @@
+name: build
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  arm-none-eabi-gcc:
+    uses: ./.github/workflows/arm-none-eabi-gcc.yml
+    with:
+      arch: -mcpu=cortex-m4
+      target: .github-workflows
+
+  x86_64-linux-gnu-gcc:
+    uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
+    with:
+      target: .github-workflows .github-workflowsTests
