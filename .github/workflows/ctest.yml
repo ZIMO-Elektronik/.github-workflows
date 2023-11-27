@@ -25,5 +25,4 @@ jobs:
           name: build.tar
           path: .
       - run: tar -xvf build.tar
-      - run: ls -R
       - run: ctest --test-dir build --schedule-random
