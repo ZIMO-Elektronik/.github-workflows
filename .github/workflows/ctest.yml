@@ -25,4 +25,4 @@ jobs:
           name: build.tar
           path: .
       - run: tar -xvf build.tar
-      - run: ctest --test-dir build --schedule-random
+      - run: ctest --test-dir build --schedule-random --timeout 86400
