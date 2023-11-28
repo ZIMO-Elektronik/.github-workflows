@@ -20,6 +20,9 @@ jobs:
     needs: x86_64-linux-gnu-gcc
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
       - uses: actions/download-artifact@v3.0.2
         with:
           name: build.tar

@@ -2,9 +2,9 @@
 
 [![build](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml)
 
-.github-workflows bundles reusable [GitHub workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows).
-
 <img src="data/images/logo.png" width="15%" align="right"/>
+
+.github-workflows bundles reusable [GitHub workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows).
 
 <details>
   <summary>Table of contents</summary>
