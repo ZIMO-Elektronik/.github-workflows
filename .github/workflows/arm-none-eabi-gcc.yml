@@ -21,5 +21,5 @@ jobs:
         with:
           fetch-depth: 0
       - uses: carlosperate/arm-none-eabi-gcc-action@v1.8.0
-      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/src/toolchains/arm_none_eabi_gcc.cmake
+      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake
       - run: cmake --build build --target ${{ inputs.target }}

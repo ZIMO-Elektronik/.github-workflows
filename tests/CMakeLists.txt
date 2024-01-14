@@ -7,6 +7,7 @@ sanitize("address,undefined")
 
 target_common_warnings(.github-workflowsTests PRIVATE)
 
+get_cpm()
 cpmaddpackage("gh:google/googletest#main")
 
 target_link_libraries(.github-workflowsTests
