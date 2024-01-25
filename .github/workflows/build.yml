@@ -14,4 +14,5 @@ jobs:
   x86_64-linux-gnu-gcc:
     uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
     with:
+      args: -DCMAKE_BUILD_TYPE=Release
       target: .github-workflows .github-workflowsTests

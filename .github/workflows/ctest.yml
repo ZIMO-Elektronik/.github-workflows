@@ -3,6 +3,11 @@ name: ctest
 on:
   workflow_call:
     inputs:
+      args:
+        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
+        default: ''
+        required: false
+        type: string
       target:
         description: 'CMake test target'
         default: ${{ github.event.repository.name }}Tests
@@ -13,8 +18,9 @@ jobs:
   x86_64-linux-gnu-gcc:
     # TODO
     # https://github.com/nektos/act/issues/1875
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.2
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.3
     with:
+      args: ${{ inputs.args }}
       target: ${{ inputs.target }}
       upload-artifact: true
 

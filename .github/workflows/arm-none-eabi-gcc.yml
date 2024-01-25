@@ -3,6 +3,11 @@ name: arm-none-eabi-gcc
 on:
   workflow_call:
     inputs:
+      args:
+        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
+        default: ''
+        required: false
+        type: string
       arch:
         description: 'Architecture flags passed to arm-none-eabi-gcc'
         required: true
@@ -21,5 +26,5 @@ jobs:
         with:
           fetch-depth: 0
       - uses: carlosperate/arm-none-eabi-gcc-action@v1.8.0
-      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake
-      - run: cmake --build build --target ${{ inputs.target }}
+      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake ${{ inputs.args }}
+      - run: cmake --build build --parallel --target ${{ inputs.target }}

@@ -26,13 +26,14 @@
 
 ## Usage
 ### arm-none-eabi-gcc
-Uses the [arm-none-eabi-gcc](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain) toolchain to build for various ARM platforms. The `arch` option is mandatory, `target` is optional. If no `target` is specified it defaults to `all`.
+Uses the [arm-none-eabi-gcc](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain) toolchain to build for various ARM platforms. The `arch` option is mandatory, `target` is optional. If no `target` is specified it defaults to `all`. Additional arguments to CMake can be passed with `args`.
 ```yml
 jobs:
   arm-none-eabi-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.1
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.3
     with:
       arch: -mcpu=cortex-m4
+      args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget
 ```
 
@@ -41,7 +42,7 @@ Uses CMakes [ctest test driver](https://cmake.org/cmake/help/latest/manual/ctest
 ```yml
 jobs:
   tests:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.1
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.3
     with:
       target: YourTestTarget
 ```
@@ -51,7 +52,7 @@ Uses the [kt3k license-checker](https://github.com/kt3k/license_checker_github_a
 ```yml
 jobs:
   license:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.1
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.3
 ```
 
 The check requires a `.licenserc.json` file in the root of the repository.
@@ -70,8 +71,9 @@ Uses a linux GCC toolchain to build for x86_64 platforms. The `target` option is
 ```yml
 jobs:
   x86_64-linux-gnu-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.1
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.3
     with:
+      args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget AnotherTarget
 ```
 

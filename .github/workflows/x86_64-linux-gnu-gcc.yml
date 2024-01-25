@@ -3,6 +3,11 @@ name: x86_64-linux-gnu-gcc
 on:
   workflow_call:
     inputs:
+      args:
+        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
+        default: ''
+        required: false
+        type: string
       target:
         description: 'CMake targets to build'
         default: 'all'
@@ -21,11 +26,11 @@ jobs:
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-      - run: cmake -Bbuild
+      - run: cmake -Bbuild ${{ inputs.args }}
         env:
           CC:   gcc-13
           CXX:  g++-13
-      - run: cmake --build build --target ${{ inputs.target }}
+      - run: cmake --build build --parallel --target ${{ inputs.target }}
       # https://github.com/actions/upload-artifact#limitations
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build

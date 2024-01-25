@@ -3,11 +3,10 @@ include(GoogleTest)
 file(GLOB_RECURSE SRC *.cpp)
 add_executable(.github-workflowsTests ${SRC})
 
-sanitize("address,undefined")
+sanitize(address,undefined)
 
 target_common_warnings(.github-workflowsTests PRIVATE)
 
-get_cpm()
 cpmaddpackage("gh:google/googletest#main")
 
 target_link_libraries(.github-workflowsTests
