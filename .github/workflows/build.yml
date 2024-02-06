@@ -11,6 +11,12 @@ jobs:
       arch: -mcpu=cortex-m4
       target: .github-workflows
 
+  esp-elf-gcc:
+    uses: ./.github/workflows/esp-elf-gcc.yml
+    with:
+      path: tests/hello_world
+      target: esp32
+
   x86_64-linux-gnu-gcc:
     uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
     with:
