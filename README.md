@@ -13,6 +13,7 @@
       <ul>
         <li><a href="#arm-none-eabi-gcc">arm-none-eabi-gcc</a></li>
         <li><a href="#ctest">ctest</a></li>
+        <li><a href="#esp-elf-gcc">esp-elf-gcc</a></li>
         <li><a href="#license-checker">license-checker</a></li>
         <li><a href="#x86_64-linux-gnu-gcc">x86_64-linux-gnu-gcc</a></li>
       </ul>
@@ -30,7 +31,7 @@ Uses the [arm-none-eabi-gcc](https://developer.arm.com/Tools%20and%20Software/GN
 ```yml
 jobs:
   arm-none-eabi-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.3
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.4
     with:
       arch: -mcpu=cortex-m4
       args: -DCMAKE_BUILD_TYPE=Release
@@ -38,13 +39,25 @@ jobs:
 ```
 
 ### ctest
-Uses CMakes [ctest test driver](https://cmake.org/cmake/help/latest/manual/ctest.1.html) to run unit tests. `target` is optional. If no `target` is specified it defaults to `${{ github.event.repository.name }}Tests`.
+Uses CMakes [ctest test driver](https://cmake.org/cmake/help/latest/manual/ctest.1.html) to run unit tests on x86. `target` is optional. If no `target` is specified it defaults to `${{ github.event.repository.name }}Tests`.
 ```yml
 jobs:
   tests:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.3
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.4
     with:
       target: YourTestTarget
+```
+
+### esp-elf-gcc
+Uses the [ESP-IDF](https://github.com/espressif/esp-idf) toolchain to build for various ESP platforms. The available options are the same as the ones from the [original CI action](https://github.com/espressif/esp-idf-ci-action).
+```yml
+jobs:
+  esp-elf-gcc:
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/esp-elf-gcc.yml@v0.0.4
+    with:
+      path: examples/rmt
+      esp_idf_version: v5.0
+      target: esp32
 ```
 
 ### license-checker
@@ -52,7 +65,7 @@ Uses the [kt3k license-checker](https://github.com/kt3k/license_checker_github_a
 ```yml
 jobs:
   license:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.3
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.4
 ```
 
 The check requires a `.licenserc.json` file in the root of the repository.
@@ -71,7 +84,7 @@ Uses a linux GCC toolchain to build for x86_64 platforms. The `target` option is
 ```yml
 jobs:
   x86_64-linux-gnu-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.3
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.4
     with:
       args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget AnotherTarget

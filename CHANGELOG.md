@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.4
+- Add esp-elf-gcc workflow
+
 ## 0.0.3
 - Add `args` input to workflows
 - Add `--parallel` to CMake build
