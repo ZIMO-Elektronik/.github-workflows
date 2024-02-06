@@ -1,0 +1,43 @@
+name: esp-elf-gcc
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        description: "Relative path under $GITHUB_WORKSPACE to place the repository"
+        default: ""
+        required: false
+        type: string
+      esp_idf_version:
+        description: "Version of ESP-IDF docker image to use"
+        default: "master"
+        required: false
+        type: string
+      target:
+        description: "ESP32 variant to build for"
+        default: "esp32"
+        required: false
+        type: string
+      command:
+        description: "Command to run inside the docker container (default: builds the project)"
+        default: "idf.py build"
+        required: false
+        type: string
+
+jobs:
+  esp-elf-gcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - run: |
+          mkdir -p ~/esp
+          cd ~/esp
+          git clone -b ${{ inputs.esp_idf_version }} --recursive https://github.com/espressif/esp-idf.git
+          cd ~/esp/esp-idf
+          ./install.sh ${{ inputs.target }}
+      - run: |
+          . $HOME/esp/esp-idf/export.sh
+          cd $GITHUB_WORKSPACE/${{ inputs.path }}
+          ${{ inputs.command }}
