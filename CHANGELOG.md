@@ -1,5 +1,8 @@
 # Changelog
 
+##
+- Add `ninja-build` prerequisite
+
 ## 0.0.4
 - Add esp-elf-gcc workflow
 
