@@ -1,6 +1,6 @@
 # Changelog
 
-##
+## 0.0.5
 - Add `ninja-build` prerequisite
 
 ## 0.0.4
