@@ -92,20 +92,22 @@ jobs:
 
 ## Limitations
 ### Tags
-:warning: For whatever reason this repository **must not** use annotated git tags. I came across this through the following [comment](https://github.com/orgs/community/discussions/48693#discussioncomment-6132963) in a GitHub discussion:
-> I finally found out what is precisely the problem.
-> 
-> Well, in the [GH doc](https://docs.github.com/en/enterprise-server@3.7/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow) it mentions that a `release tag` is needed, or a branch or a commit id.
-> 
-> The term `release tag` is inappropriate in the documentation, because we tested with a Git tag promoted in GitHub as a GitHub Release and it doesn't work better.
-> 
-> However, we figured out that if we use only a **lightweight Git tag** (rather than an **annotated git tag**), it works. So, as a result, for GitHub Workflows repositories, we need to **avoid using annotated tags**. This seem not possible to forbid as a configuration, so we need to be careful.
-> 
-> Anyway, GitHub doc is really confusing an not sufficient precise, which is too bad. Moreover, it is surprising that annotated tags doesn't work as their have _more_ information inside. It seems that it such lack a resolution command... maybe could it be fixed in next version ?
-
-:warning: **tl;dr only use lightweight tags for versioning!**
+> [!WARNING]  
+> For whatever reason this repository **must not** use annotated git tags. I came across this through the following [comment](https://github.com/orgs/community/discussions/48693#discussioncomment-6132963) in a GitHub discussion:
+>> I finally found out what is precisely the problem.
+>> 
+>> Well, in the [GH doc](https://docs.github.com/en/enterprise-server@3.7/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow) it mentions that a `release tag` is needed, or a branch or a commit id.
+>> 
+>> The term `release tag` is inappropriate in the documentation, because we tested with a Git tag promoted in GitHub as a GitHub Release and it doesn't work better.
+>> 
+>> However, we figured out that if we use only a **lightweight Git tag** (rather than an **annotated git tag**), it works. So, as a result, for GitHub Workflows repositories, we need to **avoid using annotated tags**. This seem not possible to forbid as a configuration, so we need to be careful.
+>> 
+>> Anyway, GitHub doc is really confusing an not sufficient precise, which is too bad. Moreover, it is surprising that annotated tags doesn't work as their have _more_ information inside. It seems that it such lack a resolution command... maybe could it be fixed in next version ?
+>
+>**tl;dr only use lightweight tags for versioning!**
 
 ### Running GitHub actions locally
-:warning: To support running actions locally we currently can't use relative paths to workflows. This is a known issue with [act](https://github.com/nektos/act) ([#1875](https://github.com/nektos/act/issues/1875)).
-
-:warning: **tl;dr when pushing a new tag, update existing ones!**
+> [!WARNING]
+> To support running actions locally we currently can't use relative paths to workflows. This is a known issue with [act](https://github.com/nektos/act) ([#1875](https://github.com/nektos/act/issues/1875)).
+>
+> **tl;dr when pushing a new tag, update existing ones!**
