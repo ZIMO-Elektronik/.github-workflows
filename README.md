@@ -12,7 +12,6 @@
     <li><a href="#usage">Usage</a></li>
       <ul>
         <li><a href="#arm-none-eabi-gcc">arm-none-eabi-gcc</a></li>
-        <li><a href="#ctest">ctest</a></li>
         <li><a href="#esp-elf-gcc">esp-elf-gcc</a></li>
         <li><a href="#license-checker">license-checker</a></li>
         <li><a href="#x86_64-linux-gnu-gcc">x86_64-linux-gnu-gcc</a></li>
@@ -36,16 +35,6 @@ jobs:
       arch: -mcpu=cortex-m4
       args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget
-```
-
-### ctest
-Uses CMakes [ctest test driver](https://cmake.org/cmake/help/latest/manual/ctest.1.html) to run unit tests on x86. `target` is optional. If no `target` is specified it defaults to `${{ github.event.repository.name }}Tests`.
-```yml
-jobs:
-  tests:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.6
-    with:
-      target: YourTestTarget
 ```
 
 ### esp-elf-gcc
@@ -86,8 +75,8 @@ jobs:
   x86_64-linux-gnu-gcc:
     uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.6
     with:
-      prerequisites: qt6-base-dev
-      args: -DCMAKE_BUILD_TYPE=Release
+      pre-build: sudo apt install -y ninja-build
+      args: -GNinja -DCMAKE_BUILD_TYPE=Release
       target: YourTarget AnotherTarget
 ```
 
