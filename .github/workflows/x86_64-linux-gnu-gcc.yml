@@ -41,16 +41,14 @@ jobs:
           sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
           sudo apt update -y
           sudo apt install -y gcc-13 g++-13
-      - if: ${{ inputs.pre-build }} != ''
-        name: Run pre-build steps
+      - name: Run pre-build steps
         run: ${{ inputs.pre-build }}
       - run: cmake -Bbuild ${{ inputs.args }}
         env:
           CC:   gcc-13
           CXX:  g++-13
       - run: cmake --build build --parallel --target ${{ inputs.target }}
-      - if: ${{ inputs.post-build }} != ''
-        name: Run post-build steps
+      - name: Run post-build steps
         run: ${{ inputs.post-build }}
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations

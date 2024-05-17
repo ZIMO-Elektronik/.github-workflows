@@ -51,8 +51,7 @@ jobs:
           sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
           sudo apt update -y
           sudo apt install -y gcc-13 g++-13
-      - if: ${{ inputs.pre-build }} != ''
-        name: Run pre-build steps
+      - name: Run pre-build steps
         run: ${{ inputs.pre-build }}
       - name: Install ESP-IDF
         run: |
@@ -65,8 +64,7 @@ jobs:
           . $HOME/esp/esp-idf/export.sh
           cd $GITHUB_WORKSPACE/${{ inputs.path }}
           ${{ inputs.command }}
-      - if: ${{ inputs.post-build }} != ''
-        name: Run post-build steps
+      - name: Run post-build steps
         run: ${{ inputs.post-build }}
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations

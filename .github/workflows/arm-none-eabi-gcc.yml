@@ -40,14 +40,12 @@ jobs:
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-      - if: ${{ inputs.pre-build }} != ''
-        name: Run pre-build steps
+      - name: Run pre-build steps
         run: ${{ inputs.pre-build }}
       - uses: carlosperate/arm-none-eabi-gcc-action@v1.8.1
       - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake ${{ inputs.args }}
       - run: cmake --build build --parallel --target ${{ inputs.target }}
-      - if: ${{ inputs.post-build }} != ''
-        name: Run post-build steps
+      - name: Run post-build steps
         run: ${{ inputs.post-build }}
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations
