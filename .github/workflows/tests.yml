@@ -8,5 +8,6 @@ jobs:
   tests:
     uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
     with:
+      args: -DCMAKE_BUILD_TYPE=Debug
       target: .github-workflowsTests
       post-build: ctest --test-dir build --schedule-random --timeout 86400
