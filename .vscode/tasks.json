@@ -2,22 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "CMake WorkflowsTests",
+      "label": "CMake .github-workflowsTests",
       "type": "shell",
       "isBackground": true,
       "command": "cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Debug"
     },
     {
-      "label": "Ninja WorkflowsTests",
+      "label": "Ninja .github-workflowsTests",
       "type": "shell",
       "isBackground": true,
-      "command": "ninja -C build WorkflowsTests"
+      "command": "ninja -C build .github-workflowsTests"
     },
     {
-      "label": "Run WorkflowsTests",
+      "label": "Run .github-workflowsTests",
       "type": "shell",
       "isBackground": true,
-      "command": "./build/tests/WorkflowsTests"
+      "command": "./build/tests/.github-workflowsTests"
     }
   ]
 }

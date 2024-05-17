@@ -4,8 +4,8 @@ include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
 FetchContent_Declare(
   CMakeModules
-  GIT_REPOSITORY https://github.com/ZIMO-Elektronik/CMakeModules
-  GIT_TAG v0.7.0
+  GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/CMakeModules"
+  GIT_TAG v0.9.1
   SOURCE_DIR ${CMAKE_BINARY_DIR}/CMakeModules)
 FetchContent_MakeAvailable(CMakeModules)
 
@@ -20,7 +20,7 @@ add_library(.github-workflows STATIC ${SRC})
 
 target_compile_features(.github-workflows PUBLIC cxx_std_23)
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if(PROJECT_IS_TOP_LEVEL)
   target_include_directories(
     .github-workflows
     INTERFACE include
@@ -34,17 +34,15 @@ endif()
 
 target_common_warnings(.github-workflows PRIVATE)
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if(PROJECT_IS_TOP_LEVEL)
   include(CTest)
   file(
     DOWNLOAD
-    https://raw.githubusercontent.com/ZIMO-Elektronik/.clang-format/master/.clang-format
+    "https://github.com/ZIMO-Elektronik/.clang-format/raw/master/.clang-format"
     ${CMAKE_CURRENT_LIST_DIR}/.clang-format)
   add_clang_format_target(.github-workflowsFormat OPTIONS -i FILES ${SRC})
 endif()
 
-if(BUILD_TESTING
-   AND CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME
-   AND CMAKE_SYSTEM_NAME STREQUAL CMAKE_HOST_SYSTEM_NAME)
+if(BUILD_TESTING AND CMAKE_SYSTEM_NAME STREQUAL CMAKE_HOST_SYSTEM_NAME)
   add_subdirectory(tests)
 endif()

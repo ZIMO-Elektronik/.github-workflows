@@ -3,6 +3,11 @@ name: esp-elf-gcc
 on:
   workflow_call:
     inputs:
+      prerequisites:
+        description: 'Prerequisites to install'
+        default: ''
+        required: false
+        type: string
       path:
         description: "Relative path under $GITHUB_WORKSPACE to place the repository"
         default: ""
@@ -26,11 +31,19 @@ on:
 
 jobs:
   esp-elf-gcc:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
+      - name: Add toolchain PPA
+        run: |
+          sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+          sudo apt update -y
+          sudo apt install -y gcc-13 g++-13
+      - if: ${{ inputs.prerequisites }} != ''
+        name: Install prerequisites
+        run: sudo apt install -y ${{ inputs.prerequisites }}
       - run: |
           mkdir -p ~/esp
           cd ~/esp

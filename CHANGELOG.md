@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+- Add ppa:ubuntu-toolchain-r/test ([#9679](https://github.com/actions/runner-images/issues/9679))
+- Add general `prerequisites` input
+
 ## 0.0.5
 - Add `ninja-build` prerequisite
 

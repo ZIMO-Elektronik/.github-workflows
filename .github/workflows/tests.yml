@@ -6,6 +6,7 @@ on:
 
 jobs:
   tests:
-    uses: ./.github/workflows/ctest.yml
+    uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
     with:
       target: .github-workflowsTests
+      post-build: ctest --test-dir build --schedule-random --timeout 86400

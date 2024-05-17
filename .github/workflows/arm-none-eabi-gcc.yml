@@ -3,14 +3,19 @@ name: arm-none-eabi-gcc
 on:
   workflow_call:
     inputs:
-      args:
-        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
+      prerequisites:
+        description: 'Prerequisites to install'
         default: ''
         required: false
         type: string
       arch:
         description: 'Architecture flags passed to arm-none-eabi-gcc'
         required: true
+        type: string
+      args:
+        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
+        default: ''
+        required: false
         type: string
       target:
         description: 'CMake targets to build'
@@ -20,15 +25,14 @@ on:
 
 jobs:
   arm-none-eabi-gcc:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-      - name: Install prerequisites
-        run: |
-          sudo apt update -y
-          sudo apt install -y ninja-build
+      - if: ${{ inputs.prerequisites }} != ''
+        name: Install prerequisites
+        run: sudo apt install -y ${{ inputs.prerequisites }}
       - uses: carlosperate/arm-none-eabi-gcc-action@v1.8.0
       - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake ${{ inputs.args }}
       - run: cmake --build build --parallel --target ${{ inputs.target }}

@@ -31,7 +31,7 @@ Uses the [arm-none-eabi-gcc](https://developer.arm.com/Tools%20and%20Software/GN
 ```yml
 jobs:
   arm-none-eabi-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.5
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.0.6
     with:
       arch: -mcpu=cortex-m4
       args: -DCMAKE_BUILD_TYPE=Release
@@ -43,7 +43,7 @@ Uses CMakes [ctest test driver](https://cmake.org/cmake/help/latest/manual/ctest
 ```yml
 jobs:
   tests:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.5
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/ctest.yml@v0.0.6
     with:
       target: YourTestTarget
 ```
@@ -53,7 +53,7 @@ Uses the [ESP-IDF](https://github.com/espressif/esp-idf) toolchain to build for 
 ```yml
 jobs:
   esp-elf-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/esp-elf-gcc.yml@v0.0.5
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/esp-elf-gcc.yml@v0.0.6
     with:
       path: examples/rmt
       esp_idf_version: v5.0
@@ -65,7 +65,7 @@ Uses the [kt3k license-checker](https://github.com/kt3k/license_checker_github_a
 ```yml
 jobs:
   license:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.5
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.0.6
 ```
 
 The check requires a `.licenserc.json` file in the root of the repository.
@@ -84,8 +84,9 @@ Uses a linux GCC toolchain to build for x86_64 platforms. The `target` option is
 ```yml
 jobs:
   x86_64-linux-gnu-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.5
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.0.6
     with:
+      prerequisites: qt6-base-dev
       args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget AnotherTarget
 ```
