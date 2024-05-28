@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.7
+- Update to Ubuntu 24.04
+- Remove ppa:ubuntu-toolchain-r/test
+
 ## 0.0.6
 - Add ppa:ubuntu-toolchain-r/test ([#9679](https://github.com/actions/runner-images/issues/9679))
 - Add `pre-` and `post-build` inputs
