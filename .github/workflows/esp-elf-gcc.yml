@@ -43,7 +43,7 @@ jobs:
   esp-elf-gcc:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.6
         with:
           fetch-depth: 0
       - name: Run pre-build steps
@@ -64,7 +64,8 @@ jobs:
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations
       - if: ${{ inputs.upload-artifact }}
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: build.tar
           path: build.tar
+          overwrite: true
