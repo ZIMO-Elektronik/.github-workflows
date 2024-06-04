@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.8
+- Update to upload-artifact 4.3.3
+
 ## 0.0.7
 - Update to Ubuntu 24.04
 - Remove ppa:ubuntu-toolchain-r/test
