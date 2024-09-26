@@ -7,7 +7,7 @@
 .github-workflows bundles reusable [GitHub workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows).
 
 <details>
-  <summary>Table of contents</summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li><a href="#usage">Usage</a></li>
       <ul>
@@ -19,7 +19,7 @@
     <li><a href="#limitations">Limitations</a></li>
       <ul>
         <li><a href="#tags">Tags</a></li>
-        <li><a href="#running-github-actions-locally">Running GitHub actions locally</a></li>
+        <li><a href="#running-github-actions-locally">Running GitHub Actions Locally</a></li>
       </ul>
   </ol>
 </details>
@@ -98,7 +98,7 @@ jobs:
 >
 >**tl;dr only use lightweight tags for versioning!**
 
-### Running GitHub actions locally
+### Running GitHub Actions Locally
 > [!WARNING]
 > To support running actions locally we currently can't use relative paths to workflows. This is a known issue with [act](https://github.com/nektos/act) ([#1875](https://github.com/nektos/act/issues/1875)).
 >
