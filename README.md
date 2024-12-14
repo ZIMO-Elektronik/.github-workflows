@@ -1,6 +1,6 @@
 # .github-workflows
 
-[![build](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml)
+[![build](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/.github-workflows/actions/workflows/tests.yml) [![license](https://img.shields.io/github/license/ZIMO-Elektronik/.github-workflows)](https://github.com/ZIMO-Elektronik/.github-workflows/raw/master/LICENSE)
 
 <img src="data/images/logo.png" width="15%" align="right"/>
 

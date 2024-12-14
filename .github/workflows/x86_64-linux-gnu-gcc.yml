@@ -4,23 +4,23 @@ on:
   workflow_call:
     inputs:
       pre-build:
-        description: 'Pre-build steps to run'
-        default: ''
+        description: "Pre-build steps to run"
+        default: ""
         required: false
         type: string
       args:
-        description: 'Additional CMake arguments -D <var>[:<type>]=<value>'
-        default: ''
+        description: "Additional CMake arguments -D <var>[:<type>]=<value>"
+        default: ""
         required: false
         type: string
       target:
-        description: 'CMake targets to build'
-        default: 'all'
+        description: "CMake targets to build"
+        default: "all"
         required: false
         type: string
       post-build:
-        description: 'Post-build steps to run'
-        default: ''
+        description: "Post-build steps to run"
+        default: ""
         required: false
         type: string
       upload-artifact:
@@ -33,7 +33,7 @@ jobs:
   x86_64-linux-gnu-gcc:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4.1.6
+      - uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Run pre-build steps
@@ -45,7 +45,7 @@ jobs:
       - if: ${{ inputs.upload-artifact }}
         run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations
       - if: ${{ inputs.upload-artifact }}
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.4.3
         with:
           name: build.tar
           path: build.tar
