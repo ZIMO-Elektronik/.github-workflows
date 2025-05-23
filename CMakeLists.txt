@@ -40,6 +40,7 @@ if(PROJECT_IS_TOP_LEVEL)
     DOWNLOAD
     "https://github.com/ZIMO-Elektronik/.github/raw/master/data/.clang-format"
     ${CMAKE_CURRENT_LIST_DIR}/.clang-format)
+  file(GLOB_RECURSE SRC src/*.[ch]pp tests/*.[ch]pp)
   add_clang_format_target(.github-workflowsFormat OPTIONS -i FILES ${SRC})
 endif()
 

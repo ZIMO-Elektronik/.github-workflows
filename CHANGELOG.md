@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0
+- Update to arm-none-eabi-gcc-action 1.10.1
+- Update to upload-artifact 4.6.2
+
 ## 0.0.9
 - Update to arm-none-eabi-gcc-action 1.10.0
 - Update to checkout 4.2.2
