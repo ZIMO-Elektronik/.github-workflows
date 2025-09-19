@@ -37,7 +37,7 @@ jobs:
   arm-none-eabi-gcc:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
         with:
           fetch-depth: 0
       - name: Run pre-build steps
@@ -47,11 +47,3 @@ jobs:
       - run: cmake --build build --parallel --target ${{ inputs.target }}
       - name: Run post-build steps
         run: ${{ inputs.post-build }}
-      - if: ${{ inputs.upload-artifact }}
-        run: tar -cvf build.tar build # https://github.com/actions/upload-artifact#limitations
-      - if: ${{ inputs.upload-artifact }}
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: build.tar
-          path: build.tar
-          overwrite: true
