@@ -27,11 +27,6 @@ on:
         default: ""
         required: false
         type: string
-      upload-artifact:
-        description: 'Upload build folder as artifact "build.tar"'
-        default: false
-        required: false
-        type: boolean
 
 jobs:
   arm-none-eabi-gcc:
