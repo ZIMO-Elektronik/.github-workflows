@@ -6,6 +6,7 @@ add_executable(.github-workflowsTests ${SRC})
 sanitize(address,undefined)
 
 target_common_warnings(.github-workflowsTests PRIVATE)
+target_common_errors(.github-workflowsTests PRIVATE -Werror)
 
 cpmaddpackage(URI "gh:google/googletest#main" OPTIONS "INSTALL_GTEST OFF")
 

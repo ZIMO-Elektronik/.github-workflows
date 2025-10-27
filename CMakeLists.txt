@@ -5,7 +5,7 @@ set(FETCHCONTENT_QUIET FALSE)
 FetchContent_Declare(
   CMakeModules
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/CMakeModules"
-  GIT_TAG v0.9.5
+  GIT_TAG v0.10.0
   SOURCE_DIR ${CMAKE_BINARY_DIR}/CMakeModules)
 FetchContent_MakeAvailable(CMakeModules)
 
@@ -25,14 +25,14 @@ if(PROJECT_IS_TOP_LEVEL)
     .github-workflows
     INTERFACE include
     PRIVATE include/workflows)
+  target_common_warnings(.github-workflows PRIVATE)
+  target_common_errors(.github-workflows PRIVATE)
 else()
   target_include_directories(
     .github-workflows SYSTEM
     INTERFACE include
     PRIVATE include/workflows)
 endif()
-
-target_common_warnings(.github-workflows PRIVATE)
 
 if(PROJECT_IS_TOP_LEVEL)
   include(CTest)
