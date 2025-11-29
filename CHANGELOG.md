@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.1
+- Update to `arm-none-eabi-gcc-action@1.11.1`
+
 ## 0.2.0
 - Remove `upload-artifact@4.6.2` due to incompatibility issues with Gitea ([#8](https://github.com/ZIMO-Elektronik/.github-workflows/issues/8))
 
