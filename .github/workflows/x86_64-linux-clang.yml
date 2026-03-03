@@ -1,4 +1,4 @@
-name: arm-none-eabi-gcc
+name: x86_64-linux-clang
 
 on:
   workflow_call:
@@ -7,10 +7,6 @@ on:
         description: "Pre-build steps to run"
         default: ""
         required: false
-        type: string
-      arch:
-        description: "Architecture flags passed to arm-none-eabi-gcc"
-        required: true
         type: string
       args:
         description: "Additional CMake arguments -D <var>[:<type>]=<value>"
@@ -29,16 +25,18 @@ on:
         type: string
 
 jobs:
-  arm-none-eabi-gcc:
+  x86_64-linux-clang:
     runs-on: ubuntu-24.04
+    env:
+      CC: clang
+      CXX: clang++
     steps:
       - uses: actions/checkout@v5.0.0
         with:
           fetch-depth: 0
       - name: Run pre-build steps
         run: ${{ inputs.pre-build }}
-      - uses: carlosperate/arm-none-eabi-gcc-action@v1.12.0
-      - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake ${{ inputs.args }}
+      - run: cmake -Bbuild -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX ${{ inputs.args }}
       - run: cmake --build build --parallel --target ${{ inputs.target }}
       - name: Run post-build steps
         run: ${{ inputs.post-build }}

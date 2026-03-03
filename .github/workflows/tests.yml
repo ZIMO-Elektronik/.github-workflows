@@ -3,10 +3,19 @@ name: tests
 on:
   push:
     branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-  tests:
+  x86_64-linux-gnu-gcc:
     uses: ./.github/workflows/x86_64-linux-gnu-gcc.yml
+    with:
+      args: -DCMAKE_BUILD_TYPE=Debug
+      target: .github-workflowsTests
+      post-build: ctest --test-dir build --schedule-random --timeout 86400
+
+  x86_64-linux-clang:
+    uses: ./.github/workflows/x86_64-linux-clang.yml
     with:
       args: -DCMAKE_BUILD_TYPE=Debug
       target: .github-workflowsTests
