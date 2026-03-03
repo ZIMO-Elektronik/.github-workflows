@@ -8,4 +8,4 @@ namespace workflows {
 
 int add(int a, int b);
 
-}  // namespace workflows
+} // namespace workflows

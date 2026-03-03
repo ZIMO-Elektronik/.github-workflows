@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+- Add `x86_64-linux-clang` workflow
+- Update to `arm-none-eabi-gcc-action@1.12.0`
+
 ## 0.2.1
 - Update to `arm-none-eabi-gcc-action@1.11.1`
 

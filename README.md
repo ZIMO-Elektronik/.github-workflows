@@ -14,6 +14,7 @@
         <li><a href="#arm-none-eabi-gcc">arm-none-eabi-gcc</a></li>
         <li><a href="#esp-elf-gcc">esp-elf-gcc</a></li>
         <li><a href="#license-checker">license-checker</a></li>
+        <li><a href="#x86_64-linux-clang">x86_64-linux-clang</a></li>
         <li><a href="#x86_64-linux-gnu-gcc">x86_64-linux-gnu-gcc</a></li>
       </ul>
     <li><a href="#limitations">Limitations</a></li>
@@ -30,7 +31,7 @@ Uses the [arm-none-eabi-gcc](https://developer.arm.com/Tools%20and%20Software/GN
 ```yml
 jobs:
   arm-none-eabi-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.2.0
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.3.0
     with:
       arch: -mcpu=cortex-m4
       args: -DCMAKE_BUILD_TYPE=Release
@@ -42,7 +43,7 @@ Uses the [ESP-IDF](https://github.com/espressif/esp-idf) toolchain to build for 
 ```yml
 jobs:
   esp-elf-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/esp-elf-gcc.yml@v0.2.0
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/esp-elf-gcc.yml@v0.3.0
     with:
       path: examples/rmt
       esp_idf_version: v5.0
@@ -54,7 +55,7 @@ Uses the [kt3k license-checker](https://github.com/kt3k/license_checker_github_a
 ```yml
 jobs:
   license:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.2.0
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/license-checker.yml@v0.3.0
 ```
 
 The check requires a `.licenserc.json` file in the root of the repository.
@@ -68,12 +69,26 @@ The check requires a `.licenserc.json` file in the root of the repository.
 }
 ```
 
+### x86_64-linux-clang
+Uses a linux Clang toolchain to build for x86_64 platforms. The `target` option is optional. If no `target` is specified it defaults to `all`.
+```yml
+jobs:
+  x86_64-linux-clang:
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-clang@v0.3.0
+    with:
+      pre-build: |
+        sudo apt update -y
+        sudo apt install -y ninja-build
+      args: -GNinja -DCMAKE_BUILD_TYPE=Release
+      target: YourTarget AnotherTarget
+```
+
 ### x86_64-linux-gnu-gcc
 Uses a linux GCC toolchain to build for x86_64 platforms. The `target` option is optional. If no `target` is specified it defaults to `all`.
 ```yml
 jobs:
   x86_64-linux-gnu-gcc:
-    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.2.0
+    uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.3.0
     with:
       pre-build: |
         sudo apt update -y
