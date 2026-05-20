@@ -1,26 +1,29 @@
 # Changelog
 
+## 0.3.1
+- Update to `actions/checkout@v6`
+
 ## 0.3.0
 - Add `x86_64-linux-clang` workflow
-- Update to `arm-none-eabi-gcc-action@1.12.0`
+- Update to `arm-none-eabi-gcc-action@v1.12.0`
 
 ## 0.2.1
-- Update to `arm-none-eabi-gcc-action@1.11.1`
+- Update to `arm-none-eabi-gcc-action@v1.11.1`
 
 ## 0.2.0
 - Remove `upload-artifact@4.6.2` due to incompatibility issues with Gitea ([#8](https://github.com/ZIMO-Elektronik/.github-workflows/issues/8))
 
 ## 0.1.0
-- Update to `arm-none-eabi-gcc-action@1.10.1`
+- Update to `arm-none-eabi-gcc-action@v1.10.1`
 - Update to `upload-artifact@4.6.2`
 
 ## 0.0.9
-- Update to `arm-none-eabi-gcc-action@1.10.0`
-- Update to `checkout`4.2.2`
-- Update to `upload-artifact@4.4.3`
+- Update to `arm-none-eabi-gcc-action@v1.10.0`
+- Update to `checkout@v4.2.2`
+- Update to `upload-artifact@v4.4.3`
 
 ## 0.0.8
-- Update to `upload-artifact@4.3.3`
+- Update to `upload-artifact@v4.3.3`
 
 ## 0.0.7
 - Update to Ubuntu 24.04
