@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.2
+- Use `arm-none-eabi-gcc-action@v1` (and therefore upgrade node version from v20 to v24)
+
 ## 0.3.1
 - Update to `actions/checkout@v6`
 
