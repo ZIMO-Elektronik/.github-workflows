@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.0
+- Update to Ubuntu 26.04
+
 ## 0.3.3
 - Add `release` input to `arm-none-eabi-gcc`
 - Add `cc` and `cxx` inputs to `x86_64-linux-clang` and `x86_64-linux-gnu-gcc`

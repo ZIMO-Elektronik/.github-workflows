@@ -5,10 +5,10 @@ on:
 
 jobs:
   license-checker:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Check license
-        uses: kt3k/license_checker@v1.0.6
+        uses: kt3k/license_checker@v1
