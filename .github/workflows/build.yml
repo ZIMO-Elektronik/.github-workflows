@@ -10,6 +10,7 @@ jobs:
   arm-none-eabi-gcc:
     uses: ./.github/workflows/arm-none-eabi-gcc.yml
     with:
+      release: 14.2.Rel1
       arch: -mcpu=cortex-m4
       target: .github-workflows
 

@@ -3,6 +3,14 @@ name: x86_64-linux-clang
 on:
   workflow_call:
     inputs:
+      cc:
+        description: "C compiler to use for the build"
+        type: string
+        default: "clang"
+      cxx:
+        description: "C++ compiler to use for the build"
+        type: string
+        default: "clang++"
       pre-build:
         description: "Pre-build steps to run"
         default: ""
@@ -28,8 +36,8 @@ jobs:
   x86_64-linux-clang:
     runs-on: ubuntu-24.04
     env:
-      CC: clang
-      CXX: clang++
+      CC: ${{ inputs.cc }}
+      CXX: ${{ inputs.cxx }}
     steps:
       - uses: actions/checkout@v6
         with:

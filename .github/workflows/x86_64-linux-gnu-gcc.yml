@@ -3,6 +3,14 @@ name: x86_64-linux-gnu-gcc
 on:
   workflow_call:
     inputs:
+      cc:
+        description: "C compiler to use for the build"
+        type: string
+        default: "gcc"
+      cxx:
+        description: "C++ compiler to use for the build"
+        type: string
+        default: "g++"
       pre-build:
         description: "Pre-build steps to run"
         default: ""
@@ -27,6 +35,9 @@ on:
 jobs:
   x86_64-linux-gnu-gcc:
     runs-on: ubuntu-24.04
+    env:
+      CC: ${{ inputs.cc }}
+      CXX: ${{ inputs.cxx }}
     steps:
       - uses: actions/checkout@v6
         with:

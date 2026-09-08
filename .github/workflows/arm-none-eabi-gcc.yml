@@ -8,6 +8,9 @@ on:
         default: ""
         required: false
         type: string
+      release:
+        default: "latest"
+        type: string
       arch:
         description: "Architecture flags passed to arm-none-eabi-gcc"
         required: true
@@ -38,6 +41,8 @@ jobs:
       - name: Run pre-build steps
         run: ${{ inputs.pre-build }}
       - uses: carlosperate/arm-none-eabi-gcc-action@v1
+        with:
+          release: ${{ inputs.release }}
       - run: cmake -Bbuild -DARCH=${{ inputs.arch }} -DCMAKE_TOOLCHAIN_FILE=CMakeModules/cmake/toolchain-arm-none-eabi-gcc.cmake ${{ inputs.args }}
       - run: cmake --build build --parallel --target ${{ inputs.target }}
       - name: Run post-build steps
