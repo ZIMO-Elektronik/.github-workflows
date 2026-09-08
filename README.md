@@ -33,6 +33,7 @@ jobs:
   arm-none-eabi-gcc:
     uses: ZIMO-Elektronik/.github-workflows/.github/workflows/arm-none-eabi-gcc.yml@v0.3.0
     with:
+      release: 14.2.Rel1
       arch: -mcpu=cortex-m4
       args: -DCMAKE_BUILD_TYPE=Release
       target: YourTarget
@@ -76,6 +77,8 @@ jobs:
   x86_64-linux-clang:
     uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-clang@v0.3.0
     with:
+      cc: gcc-14
+      cxx: g++-14
       pre-build: |
         sudo apt update -y
         sudo apt install -y ninja-build
@@ -90,6 +93,8 @@ jobs:
   x86_64-linux-gnu-gcc:
     uses: ZIMO-Elektronik/.github-workflows/.github/workflows/x86_64-linux-gnu-gcc.yml@v0.3.0
     with:
+      cc: clang-18
+      cxx: clang++-18
       pre-build: |
         sudo apt update -y
         sudo apt install -y ninja-build

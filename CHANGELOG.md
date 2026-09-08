@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3
+- Add `release` input to `arm-none-eabi-gcc`
+- Add `cc` and `cxx` inputs to `x86_64-linux-clang` and `x86_64-linux-gnu-gcc`
+
 ## 0.3.2
 - Use `arm-none-eabi-gcc-action@v1` (and therefore upgrade node version from v20 to v24)
 
